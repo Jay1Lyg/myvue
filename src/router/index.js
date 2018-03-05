@@ -1,23 +1,40 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import section from '@/components/section/section.vue';
-import bar from '@/components/bar/bar.vue';
+ import header from '@/components/header/header';
+import foo from '@/components/foo/foo';
+import bar from '@/components/bar/bar';
+import add from '@/components/add/add';
+// import home from '@/components/home/add';
+// import clear from '@/components/clear/clear';
 
 Vue.use(Router);
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/foo',
-      Router,
-      name: 'section',
-      component: section
+      path: '',
+      component: header,
+      children: [
+        {
+          path: '',
+          name: 'bar',
+          component: bar
+        },
+        {
+          path: 'add',
+          name: 'add',
+          component: add
+        }
+      ]
+
     },
     {
-      path: '/bar',
-      Router,
-      name: 'bar',
-      component: bar
+      path: '/foo',
+      component: foo
     }
+    // { path: '*',
+    //   redirect: '/home'
+    // }
   ]
 });

@@ -2,8 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
-import router from './router';
+// import bar from './components/bar/bar';
+import router from './router/index.js';
 import axios from 'axios';
+import store from './store/store.js';
 Vue.prototype.$ajax = axios;
 
 Vue.config.productionTip = false;
@@ -12,6 +14,6 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: { App }
+  store,
+  render: h => h(App)
 });
